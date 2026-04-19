@@ -1,65 +1,50 @@
-![GitHub](https://img.shields.io/github/license/DataForScience/CrewAI)
+![GitHub](https://img.shields.io/github/license/DataForScience/LLMs)
 [![Twitter @data4sci](https://img.shields.io/twitter/follow/data4sci)](https://twitter.com/intent/follow?screen_name=data4sci)
-![GitHub top language](https://img.shields.io/github/languages/top/DataForScience/CrewAI)
-![GitHub repo size](https://img.shields.io/github/repo-size/DataForScience/CrewAI)
-![GitHub last commit](https://img.shields.io/github/last-commit/DataForScience/CrewAI)
+![GitHub top language](https://img.shields.io/github/languages/top/DataForScience/LLMs)
+![GitHub repo size](https://img.shields.io/github/repo-size/DataForScience/LLMs)
+![GitHub last commit](https://img.shields.io/github/last-commit/DataForScience/LLMs)
 
 [![Graphs For Science](https://img.shields.io/badge/Graphs_For_Science-Subscribe-blue)](https://graphs4sci.substack.com/)
-	[![Data Science Briefing](https://img.shields.io/badge/Data_Science_Briefing-Subscribe-blue)](https://data4science.ck.page/a63d4cc8d9)
+[![Data Science Briefing](https://img.shields.io/badge/Data_Science_Briefing-Subscribe-blue)](https://data4science.ck.page/a63d4cc8d9)
 
-# CrewAI for Production-Ready Multi‑Agent Systems
+# Building Agentic Harnesses from Scratch
 
-**Code + slides** to accompany the O’Reilly Live Training, [CrewAI for Production‑Ready Multi‑Agent Systems](https://www.oreilly.com/live-events/crewai-for-production-ready-multiagent-systems/0642572289041/) by Data For Science, Inc.
+Educational notebooks demonstrating how to build production-grade agentic systems from first principles using LLMs. Learn the core patterns behind tools like Claude Code, Cursor's agent mode, and autonomous research assistants by implementing them yourself.
 
-**Want the complete Gumroad package?** Get the full course materials here: **[Purchase on Gumroad](https://gum.new/gum/cmlubht78001m04jx0ttyh1qk)**.
+These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into an agent that can call tools, maintain state, recover from errors, and pursue goals across multiple steps.
 
+## What You'll Learn
 
-This live training will take developers beyond the basics of LLM interaction into the realm of building sophisticated, autonomous multi-agent systems. While Large Language Models are powerful on their own, their true potential is unlocked when they are orchestrated into teams that can plan, execute, and review complex tasks. CrewAI is quickly becoming state of the art in AI agent development and orchestration.
+### Notebook 1: Basic Agentic Harness
+Build a minimal but complete harness from scratch — the foundation of any autonomous agent system.
 
-This live training will help master the CrewAI framework through hand-on examples. We start by building a simple "Hello World" research agent, then quickly advance to constructing a team of financial analysts equipped with custom tools. We then explore advanced concepts like hierarchical delegation—where a manager agent supervises a team—and implement long-term memory so agents "learn" from past executions. Finally, we cover essential production patterns, including human-in-the-loop approval flows for sensitive tasks (like writing code) and separating agent logic from configuration for maintainable software.
+**Core concepts:**
+- The five components of a harness's core state (goal, trace, memory, budget, status)
+- Implementing a control loop that drives an LLM through multi-step tasks
+- Defining typed tools the LLM can call safely
+- Validating LLM-proposed actions against schemas before execution
+- Inspecting execution traces for debugging
 
-## Course Structure
-### 1. Foundations of Autonomous Agents
-- Core Concepts
-- Roles
-- Goals
-- Backstories
+**What you'll build:** A single-agent harness that solves multi-step research tasks by repeatedly composing context, asking the LLM what to do next, executing tool calls, and updating state until the goal is met.
 
-### 2. Tools and Sequential Crews
-- Use Search and APIs
-- Develop Custom Tools
-- Understand Context
+### Notebook 2: State-of-the-Art Agentic Harness
+Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
 
-### 3. Orchestration & Memory
-- Hierarchical Process
-- Managers and Task delegation
-- RAG
-- Vector Databases
+**Advanced topics:**
+- **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
+- **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
+- **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
+- **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
+- **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
+- **Multi-dimensional budgeting** — Graceful degradation under token, time, and cost constraints
+- **Structured tracing** — Full observability and replay capability
 
-### 4. Human-in-the-Loop (HITL)
-- Files
-- Code development
-- HITL Workflows
+**What you'll build:** A city comparison agent that demonstrates natural parallelism, final aggregation, and verifiable outputs.
 
-### 5. Production Patterns
-- Extensible configurations
-- Supporting multiple LLMs
-- Error Handling
-- Best Practices
+## Notebooks
 
-## What you’ll get (and how to use it)
-
-- **5 hands-on notebooks**: start simple, then level up into tools, orchestration, memory/RAG, HITL, and production patterns.
-- **Slides**: Detailed PDF slide deck
-
-## Start here
-
-- **Module 1**: [`1. Foundations.ipynb`](./1.%20Foundations.ipynb)
-- **Module 2**: [`2. Tools, Sequential, Crews.ipynb`](./2.%20Tools,%20Sequential,%20Crews.ipynb)
-- **Module 3**: [`3. Orchestration and Memory.ipynb`](./3.%20Orchestration%20and%20Memory.ipynb)
-- **Module 4**: [`4. Human in the Loop.ipynb`](./4.%20Human%20in%20the%20Loop.ipynb)
-- **Module 5**: [`5. Production Patterns.ipynb`](./5.%20Production%20Patterns.ipynb)
-- **Slides (PDF)**: [`slides/CrewAI.pdf`](./slides/CrewAI.pdf)
+- **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
+- **[02 - Advanced Agentic Harness.ipynb](./02%20-%20Advanced%20Agentic%20Harness.ipynb)** — Production patterns and advanced techniques
 
 ## Setup
 
@@ -74,30 +59,24 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 2. Create an environment and install dependencies:
 
 ```bash
-git clone https://github.com/DataForScience/CrewAI.git
-cd CrewAI
+git clone https://github.com/DataForScience/LLMs.git
+cd LLMs
 uv venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 uv sync
 ```
 
-### 2) Add API keys
+### 2) API Keys (Optional)
 
-You'll need accounts with the following services. All offer free tiers or pay-as-you-go pricing:
+The notebooks run end-to-end in **mock mode** without any API keys. They include rule-based mock LLM providers that are smart enough to drive the demos.
 
-| Service    | Used in         | Where to get it                          |
-|------------|-----------------|------------------------------------------|
-| Anthropic  | All notebooks   | console.anthropic.com                    |
-| Serper     | Modules 2–5     | serper.dev                               |
-| VoyageAI   | Module 3 (RAG)  | dash.voyageai.com *(optional)*           |
+To use real LLM APIs, set your Anthropic API key:
 
-Once you have your keys, create a `.env` file in the root of the project:
-
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
 ```
-ANTHROPIC_API_KEY=sk-ant-...
-SERPER_API_KEY=...
-VOYAGE_API_KEY=...  
-```
+
+Then change `BACKEND = "mock"` to `BACKEND = "anthropic"` in the notebook.
 
 ### 3) Launch notebooks
 
@@ -108,40 +87,33 @@ jupyter notebook
 ## Repository Structure
 
 ```
-CrewAI/
-├── 1. Foundations.ipynb                 # Module 1: Agent basics
-├── 2. Tools, Sequential, Crews.ipynb    # Module 2: Tools + workflows
-├── 3. Orchestration and Memory.ipynb    # Module 3: Orchestration + memory + RAG
-├── 4. Human in the Loop.ipynb           # Module 4: HITL patterns
-├── 5. Production Patterns.ipynb         # Module 5: Production best practices
-├── slides/                               # Slides
-│   └── CrewAI.pdf
-├── data/                                 # Logos + author image assets
-├── config/                               # YAML agent/task config (Module 5)
+LLMs/
+├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
+├── 02 - Advanced Agentic Harness.ipynb  # Notebook 2: Production patterns
+├── Template.ipynb                        # Blank template for experiments
+├── data/                                 # Logos and assets
+│   ├── D4Sci_logo_ball.png
+│   ├── D4Sci_logo_full.png
+│   └── bgoncalves.png
+├── old/                                  # Archive of previous experiments
 ├── d4sci.mplstyle                        # Custom matplotlib style
 ├── pyproject.toml                        # Dependency manifest (for `uv sync`)
-├── requirements.txt                      # Alternative install path (pip/uv pip)
-└── .env                                  # API keys (create this file; do not commit)
+├── uv.lock                               # Lock file for reproducible builds
+└── LICENSE                               # MIT License
 ```
 
-## Suggested learning path
+## Learning Path
 
-- Start with **Module 1** and run the notebooks in order (1 → 5).
-- If you only want the deck, open `slides/CrewAI.pdf`.
+1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
+2. **Progress to Notebook 2** (`02 - Advanced Agentic Harness.ipynb`) for production-grade patterns
+3. **Experiment** with the `Template.ipynb` to build your own agents
 
-| File                          | Topic                          |
-|-------------------------------|--------------------------------|
-| `1. Foundations.ipynb`           | Agents, roles, goals           |
-| `2. Tools, Sequential, Crews.ipynb` | Tools, multi-agent workflows |
-| `3. Orchestration and Memory.ipynb` | Hierarchical crews, memory, RAG |
-| `4. Human in the Loop.ipynb`     | Approval flows, safety patterns |
-| `5. Production Patterns.ipynb`   | Config, retries, monitoring    |
+## Key Features
 
----
-
-## Estimated API Costs
-
-Running through all notebooks end-to-end costs roughly **$1–3** in API calls, depending on how much you re-run cells. The biggest spend is Module 4 (Human in the Loop), which generates longer outputs during the multi-stage workflow examples.
+- **No API keys required** — All notebooks run in mock mode with rule-based LLM stand-ins
+- **Fully reproducible** — Deterministic outputs for teaching and debugging
+- **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
+- **Hands-on implementation** — Build everything from scratch to understand every design decision
 
 ---
 

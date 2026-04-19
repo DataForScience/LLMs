@@ -9,6 +9,7 @@ dependencies = [
     "matplotlib>=3.10.8",
     "nest-asyncio>=1.6.0",
     "pydantic>=2.13.2",
+    "sentence-transformers>=5.4.1",
     "tqdm>=4.67.3",
     "watermark>=2.6.0",
 ]
