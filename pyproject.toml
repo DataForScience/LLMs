@@ -1,0 +1,14 @@
+[project]
+name = "llms"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=0.96.0",
+    "matplotlib>=3.10.8",
+    "nest-asyncio>=1.6.0",
+    "pydantic>=2.13.2",
+    "tqdm>=4.67.3",
+    "watermark>=2.6.0",
+]
