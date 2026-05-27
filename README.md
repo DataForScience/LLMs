@@ -7,11 +7,11 @@
 [![Graphs For Science](https://img.shields.io/badge/Graphs_For_Science-Subscribe-blue)](https://graphs4sci.substack.com/)
 [![Data Science Briefing](https://img.shields.io/badge/Data_Science_Briefing-Subscribe-blue)](https://data4science.ck.page/a63d4cc8d9)
 
-# Building Agentic Harnesses from Scratch
+# LLMs for Science
 
-Educational notebooks demonstrating how to build production-grade agentic systems from first principles using LLMs. Learn the core patterns behind tools like Claude Code, Cursor's agent mode, and autonomous research assistants by implementing them yourself.
+Educational notebooks exploring production-grade agentic systems and LLMs pipelines from first principles. Learn the core patterns behind tools like Claude Code, Cursor's agent mode, and autonomous research assistants by implementing them yourself.
 
-These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into an agent that can call tools, maintain state, recover from errors, and pursue goals across multiple steps.
+These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into a truly useful everyday tool.
 
 ## What You'll Learn
 
