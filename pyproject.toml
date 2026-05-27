@@ -6,8 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "anthropic>=0.96.0",
+    "jinja2>=3.1.6",
+    "jupyter>=1.1.1",
     "matplotlib>=3.10.8",
     "nest-asyncio>=1.6.0",
+    "notebook>=7.5.6",
     "pydantic>=2.13.2",
     "sentence-transformers>=5.4.1",
     "tqdm>=4.67.3",

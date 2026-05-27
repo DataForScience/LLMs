@@ -44,7 +44,6 @@ Upgrade every component toward production-grade systems like Claude Code, Devin,
 ## Notebooks
 
 - **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
-- **[02 - Advanced Agentic Harness.ipynb](./02%20-%20Advanced%20Agentic%20Harness.ipynb)** — Production patterns and advanced techniques
 
 ## Setup
 
@@ -89,13 +88,11 @@ jupyter notebook
 ```
 LLMs/
 ├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
-├── 02 - Advanced Agentic Harness.ipynb  # Notebook 2: Production patterns
 ├── Template.ipynb                        # Blank template for experiments
 ├── data/                                 # Logos and assets
 │   ├── D4Sci_logo_ball.png
 │   ├── D4Sci_logo_full.png
 │   └── bgoncalves.png
-├── old/                                  # Archive of previous experiments
 ├── d4sci.mplstyle                        # Custom matplotlib style
 ├── pyproject.toml                        # Dependency manifest (for `uv sync`)
 ├── uv.lock                               # Lock file for reproducible builds
@@ -105,12 +102,9 @@ LLMs/
 ## Learning Path
 
 1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
-2. **Progress to Notebook 2** (`02 - Advanced Agentic Harness.ipynb`) for production-grade patterns
-3. **Experiment** with the `Template.ipynb` to build your own agents
 
 ## Key Features
 
-- **No API keys required** — All notebooks run in mock mode with rule-based LLM stand-ins
 - **Fully reproducible** — Deterministic outputs for teaching and debugging
 - **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
 - **Hands-on implementation** — Build everything from scratch to understand every design decision
