@@ -41,19 +41,6 @@ Build a complete language model from first principles — counting, not neural n
 **What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
 
 ### Notebook 3: Advanced Agentic Harness
-Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
-
-**Core concepts:**
-- The language modeling task: estimating `P(next word | previous words)`
-- Building an n-gram (4-gram) model over the WikiText-103 corpus (~103M words)
-- Why text is sparse: word-frequency distributions and **Zipf's law**
-- Counting three-word contexts and the single-continuation problem
-- **Autoregressive generation** — feeding the output back in to predict the next token
-- **Temperature** and sampling — greedy decoding vs. probabilistic sampling
-
-**What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
-
-### Notebook 3: Advanced Agentic Harness
 Upgrade every component of the basic harness toward production-grade systems like Claude Code, Devin, or modern research agents.
 
 **Core concepts:**
