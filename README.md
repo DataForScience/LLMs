@@ -4,14 +4,14 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/DataForScience/LLMs)
 ![GitHub last commit](https://img.shields.io/github/last-commit/DataForScience/LLMs)
 
-[![Graphs For Science](https://img.shields.io/badge/Graphs_For_Science-Subscribe-blue)](https://graphs4sci.substack.com/)
+[![Data For Science Substack](https://img.shields.io/badge/Graphs_For_Science-Subscribe-blue)](https://data4sci.substack.com/)
 [![Data Science Briefing](https://img.shields.io/badge/Data_Science_Briefing-Subscribe-blue)](https://data4science.ck.page/a63d4cc8d9)
 
-# Building Agentic Harnesses from Scratch
+# LLMs for Science
 
-Educational notebooks demonstrating how to build production-grade agentic systems from first principles using LLMs. Learn the core patterns behind tools like Claude Code, Cursor's agent mode, and autonomous research assistants by implementing them yourself.
+Educational notebooks exploring production-grade agentic systems and LLMs pipelines from first principles. Learn the core patterns behind tools like Claude Code, Cursor's agent mode, and autonomous research assistants by implementing them yourself.
 
-These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into an agent that can call tools, maintain state, recover from errors, and pursue goals across multiple steps.
+These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into a truly useful everyday tool.
 
 ## What You'll Learn
 
@@ -43,9 +43,22 @@ Build a complete language model from first principles — counting, not neural n
 ### Notebook 3: Advanced Agentic Harness
 Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
 
-**Advanced topics:**
+**Core concepts:**
+- The language modeling task: estimating `P(next word | previous words)`
+- Building an n-gram (4-gram) model over the WikiText-103 corpus (~103M words)
+- Why text is sparse: word-frequency distributions and **Zipf's law**
+- Counting three-word contexts and the single-continuation problem
+- **Autoregressive generation** — feeding the output back in to predict the next token
+- **Temperature** and sampling — greedy decoding vs. probabilistic sampling
+
+**What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
+
+### Notebook 3: Advanced Agentic Harness
+Upgrade every component of the basic harness toward production-grade systems like Claude Code, Devin, or modern research agents.
+
+**Core concepts:**
 - **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
-- **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
+- **DAG orchestration** — Parallel execution of independent tasks with `asyncio` instead of sequential processing
 - **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
 - **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
 - **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
@@ -110,7 +123,8 @@ LLMs/
 ├── data/                                 # Logos and assets
 │   ├── D4Sci_logo_ball.png
 │   ├── D4Sci_logo_full.png
-│   └── bgoncalves.png
+│   ├── bgoncalves.png
+│   └── wikitext_quadgram_model.pkl       # Cached 4-gram model (built on first run)
 ├── d4sci.mplstyle                        # Custom matplotlib style
 ├── pyproject.toml                        # Dependency manifest (for `uv sync`)
 ├── uv.lock                               # Lock file for reproducible builds
