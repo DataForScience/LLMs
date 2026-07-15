@@ -27,9 +27,40 @@ Build a minimal but complete harness from scratch — the foundation of any auto
 
 **What you'll build:** A single-agent harness that solves multi-step research tasks by repeatedly composing context, asking the LLM what to do next, executing tool calls, and updating state until the goal is met.
 
+<<<<<<< HEAD
+=======
+### Notebook 2: State-of-the-Art Agentic Harness
+Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
+
+**Advanced topics:**
+- **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
+- **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
+- **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
+- **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
+- **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
+- **Multi-dimensional budgeting** — Graceful degradation under token, time, and cost constraints
+- **Structured tracing** — Full observability and replay capability
+
+**What you'll build:** A city comparison agent that demonstrates natural parallelism, final aggregation, and verifiable outputs.
+
+### Small Language Model
+Build a complete language model from first principles — counting, not neural networks — to understand what every LLM is really doing under the hood.
+
+**Core concepts:**
+- The language modeling task: estimating `P(next word | previous words)`
+- Building an n-gram (4-gram) model over the WikiText-103 corpus (~103M words)
+- Why text is sparse: word-frequency distributions and **Zipf's law**
+- Counting three-word contexts and the single-continuation problem
+- **Autoregressive generation** — feeding the output back in to predict the next token
+- **Temperature** and sampling — greedy decoding vs. probabilistic sampling
+
+**What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
+
+>>>>>>> ec867fe (advanced harness)
 ## Notebooks
 
 - **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
+- **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** — Build an n-gram language model from scratch and generate text
 
 ## Setup
 
@@ -74,11 +105,13 @@ jupyter notebook
 ```
 LLMs/
 ├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
+├── 02 - Small Language Model.ipynb      # Notebook 2: n-gram language model
 ├── Template.ipynb                        # Blank template for experiments
-├── data/                                 # Logos and assets
+├── data/                                 # Logos, assets, and cached models
 │   ├── D4Sci_logo_ball.png
 │   ├── D4Sci_logo_full.png
-│   └── bgoncalves.png
+│   ├── bgoncalves.png
+│   └── wikitext_quadgram_model.pkl       # Cached 4-gram model (built on first run)
 ├── d4sci.mplstyle                        # Custom matplotlib style
 ├── pyproject.toml                        # Dependency manifest (for `uv sync`)
 ├── uv.lock                               # Lock file for reproducible builds
@@ -88,6 +121,7 @@ LLMs/
 ## Learning Path
 
 1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
+2. **Continue with Notebook 2** (`02 - Small Language Model.ipynb`) to see how language models work from the ground up
 
 ## Key Features
 
