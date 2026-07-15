@@ -45,7 +45,7 @@ Upgrade every component of the basic harness toward production-grade systems lik
 
 **Core concepts:**
 - **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
-- **DAG orchestration** — Parallel execution of independent tasks with `asyncio` instead of sequential processing
+- **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
 - **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
 - **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
 - **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
@@ -54,13 +54,11 @@ Upgrade every component of the basic harness toward production-grade systems lik
 
 **What you'll build:** A three-city comparison agent that demonstrates natural parallelism (up to 9 concurrent fetches), final aggregation, and verifiable outputs — with trace plots for per-step latency, budget pressure, and tokens by role.
 
-## Contents
+## Notebooks
 
-| Notebooks | Blog post | Content |
-| :--: | :--: | :--: |
-| **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** | **[Building a Basic Agentic Harness](https://data4sci.substack.com/p/building-a-basic-agentic-harness)** | Start here to understand the fundamentals |
-| **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
-| **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
+- **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
+- **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** — Build an n-gram language model from scratch and generate text
+- **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** — Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles
 
 ## Setup
 
@@ -110,8 +108,7 @@ LLMs/
 ├── data/                                 # Logos and assets
 │   ├── D4Sci_logo_ball.png
 │   ├── D4Sci_logo_full.png
-│   ├── bgoncalves.png
-│   └── wikitext_quadgram_model.pkl       # Cached 4-gram model (built on first run)
+│   └── bgoncalves.png
 ├── d4sci.mplstyle                        # Custom matplotlib style
 ├── pyproject.toml                        # Dependency manifest (for `uv sync`)
 ├── uv.lock                               # Lock file for reproducible builds
