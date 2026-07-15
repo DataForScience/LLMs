@@ -27,23 +27,7 @@ Build a minimal but complete harness from scratch — the foundation of any auto
 
 **What you'll build:** A single-agent harness that solves multi-step research tasks by repeatedly composing context, asking the LLM what to do next, executing tool calls, and updating state until the goal is met.
 
-<<<<<<< HEAD
-=======
-### Notebook 2: State-of-the-Art Agentic Harness
-Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
-
-**Advanced topics:**
-- **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
-- **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
-- **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
-- **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
-- **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
-- **Multi-dimensional budgeting** — Graceful degradation under token, time, and cost constraints
-- **Structured tracing** — Full observability and replay capability
-
-**What you'll build:** A city comparison agent that demonstrates natural parallelism, final aggregation, and verifiable outputs.
-
-### Small Language Model
+### Notebook 2: Small Language Model
 Build a complete language model from first principles — counting, not neural networks — to understand what every LLM is really doing under the hood.
 
 **Core concepts:**
@@ -56,11 +40,25 @@ Build a complete language model from first principles — counting, not neural n
 
 **What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
 
->>>>>>> ec867fe (advanced harness)
+### Notebook 3: Advanced Agentic Harness
+Upgrade every component of the basic harness toward production-grade systems like Claude Code, Devin, or modern research agents.
+
+**Core concepts:**
+- **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
+- **DAG orchestration** — Parallel execution of independent tasks with `asyncio` instead of sequential processing
+- **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
+- **Verification hierarchy** — Deterministic tests → output diffing → LLM-as-judge → human review
+- **Multi-agent roles** — Planner / Worker / Critic specialization for robustness
+- **Multi-dimensional budgeting** — Graceful degradation under token, time, and cost constraints
+- **Structured tracing** — Full observability and replay capability
+
+**What you'll build:** A city comparison agent that demonstrates natural parallelism, final aggregation, and verifiable outputs — with trace plots for per-step latency, budget pressure, and token usage by role.
+
 ## Notebooks
 
 - **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
 - **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** — Build an n-gram language model from scratch and generate text
+- **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** — Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles
 
 ## Setup
 
@@ -106,6 +104,7 @@ jupyter notebook
 LLMs/
 ├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
 ├── 02 - Small Language Model.ipynb      # Notebook 2: n-gram language model
+├── 03 - Advanced Agentic Harness.ipynb  # Notebook 3: Production-grade patterns
 ├── Template.ipynb                        # Blank template for experiments
 ├── data/                                 # Logos, assets, and cached models
 │   ├── D4Sci_logo_ball.png
@@ -122,6 +121,7 @@ LLMs/
 
 1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
 2. **Continue with Notebook 2** (`02 - Small Language Model.ipynb`) to see how language models work from the ground up
+3. **Finish with Notebook 3** (`03 - Advanced Agentic Harness.ipynb`) to upgrade the harness with production-grade patterns
 
 ## Key Features
 
