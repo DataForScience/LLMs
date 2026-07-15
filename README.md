@@ -54,11 +54,13 @@ Upgrade every component toward production-grade systems like Claude Code, Devin,
 
 **What you'll build:** A three-city comparison agent that demonstrates natural parallelism (up to 9 concurrent fetches), final aggregation, and verifiable outputs — with trace plots for per-step latency, budget pressure, and tokens by role.
 
-## Notebooks
+## Contents
 
-- **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** — Start here to understand the fundamentals
-- **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** — Build an n-gram language model from scratch and generate text
-- **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** — Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles
+| Notebooks | Blog post | Content |
+| :--: | :--: | :--: |
+| **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** | **[Building a Basic Agentic Harness](https://data4sci.substack.com/p/building-a-basic-agentic-harness)** | Start here to understand the fundamentals |
+| **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
+| **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
 
 ## Setup
 
