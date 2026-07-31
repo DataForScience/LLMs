@@ -13,6 +13,20 @@ Educational notebooks exploring production-grade agentic systems and LLMs pipeli
 
 These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into a truly useful everyday tool.
 
+
+## Learning Path
+
+1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
+2. **Continue with Notebook 2** (`02 - Small Language Model.ipynb`) to see how language models work from the ground up
+3. **Finish with Notebook 3** (`03 - Advanced Agentic Harness.ipynb`) to upgrade the harness with production-grade patterns
+
+## Key Features
+
+- **Fully reproducible** — Deterministic outputs for teaching and debugging
+- **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
+- **Hands-on implementation** — Build everything from scratch to understand every design decision
+
+
 ## What You'll Learn
 
 ### Notebook 1: Basic Agentic Harness
@@ -41,9 +55,9 @@ Build a complete language model from first principles — counting, not neural n
 **What you'll build:** A 4-gram model trained on Wikipedia that generates text from a prompt, with a temperature switch that mirrors the same decoding knob exposed by modern LLMs.
 
 ### Notebook 3: Advanced Agentic Harness
-Upgrade every component of the basic harness toward production-grade systems like Claude Code, Devin, or modern research agents.
+Upgrade every component toward production-grade systems like Claude Code, Devin, or modern research agents.
 
-**Core concepts:**
+**Advanced topics:**
 - **Typed tools with Pydantic** — Auto-generated JSON schemas and robust validation
 - **DAG orchestration** — Parallel execution of independent tasks instead of sequential processing
 - **Multi-tier memory** — Working, episodic, and semantic memory with retrieval
@@ -61,6 +75,24 @@ Upgrade every component of the basic harness toward production-grade systems lik
 | **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** | **[Building a Basic Agentic Harness](https://data4sci.substack.com/p/building-a-basic-agentic-harness)** | Start here to understand the fundamentals |
 | **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
 | **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
+| None | **[Self hosting LLMs with Llama.cpp](https://data4sci.substack.com/p/self-hosting-llms-with-llamacpp)** | Run LLMs on your own hardware: install llama.cpp, serve models over an OpenAI-compatible API, explore GGUF files, and choose the right quantization |
+
+## Repository Structure
+
+```
+LLMs/
+├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
+├── 02 - Small Language Model.ipynb      # Notebook 2: n-gram language model
+├── 03 - Advanced Agentic Harness.ipynb  # Notebook 3: Production-grade patterns
+├── data/                                 # Logos and assets
+│   ├── D4Sci_logo_ball.png
+│   ├── D4Sci_logo_full.png
+│   └── bgoncalves.png
+├── d4sci.mplstyle                        # Custom matplotlib style
+├── pyproject.toml                        # Dependency manifest (for `uv sync`)
+├── uv.lock                               # Lock file for reproducible builds
+└── LICENSE                               # MIT License
+```
 
 ## Setup
 
@@ -99,35 +131,6 @@ Then change `BACKEND = "mock"` to `BACKEND = "anthropic"` in the notebook.
 ```bash
 jupyter notebook
 ```
-
-## Repository Structure
-
-```
-LLMs/
-├── 01 - Basic Agentic Harness.ipynb     # Notebook 1: Fundamentals
-├── 02 - Small Language Model.ipynb      # Notebook 2: n-gram language model
-├── 03 - Advanced Agentic Harness.ipynb  # Notebook 3: Production-grade patterns
-├── data/                                 # Logos and assets
-│   ├── D4Sci_logo_ball.png
-│   ├── D4Sci_logo_full.png
-│   └── bgoncalves.png
-├── d4sci.mplstyle                        # Custom matplotlib style
-├── pyproject.toml                        # Dependency manifest (for `uv sync`)
-├── uv.lock                               # Lock file for reproducible builds
-└── LICENSE                               # MIT License
-```
-
-## Learning Path
-
-1. **Start with Notebook 1** (`01 - Basic Agentic Harness.ipynb`) to understand the core concepts
-2. **Continue with Notebook 2** (`02 - Small Language Model.ipynb`) to see how language models work from the ground up
-3. **Finish with Notebook 3** (`03 - Advanced Agentic Harness.ipynb`) to upgrade the harness with production-grade patterns
-
-## Key Features
-
-- **Fully reproducible** — Deterministic outputs for teaching and debugging
-- **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
-- **Hands-on implementation** — Build everything from scratch to understand every design decision
 
 ---
 
