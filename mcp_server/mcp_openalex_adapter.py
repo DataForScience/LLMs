@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
-"""Dual-era adapter: standard MCP (``initialize``) <-> MCP 2026-07-28.
+"""Dual-era adapter: legacy MCP (``initialize``) <-> MCP 2026-07-28.
 
-``mcp_openalex_server.py`` intentionally speaks only the fictional, stateless
-"MCP 2026-07-28" wire format: it rejects ``initialize`` and instead expects
-``server/discover`` plus per-request ``_meta`` carrying the protocol version
-and client capabilities. Real clients (pi included) still speak the released
-protocol that begins with an ``initialize`` handshake.
+``mcp_openalex_server.py`` intentionally speaks only the stateless
+MCP ``2026-07-28`` wire format -- the latest protocol revision
+(https://blog.modelcontextprotocol.io/posts/2026-07-28/): it rejects
+``initialize`` and instead expects ``server/discover`` plus per-request
+``_meta`` carrying the protocol version and client capabilities. Clients
+that have not yet adopted 2026-07-28 still speak the legacy protocol that
+begins with an ``initialize`` handshake.
 
 This adapter bridges the two eras WITHOUT modifying the server:
 
   * It is the stdio program the client launches.
   * It answers ``initialize`` / ``ping`` / ``notifications/initialized``
-    itself, using the released protocol.
+    itself, using the legacy protocol.
   * For every real operation (tools/resources) it spawns the unchanged
     server as a subprocess, injects the ``_meta`` block the server demands,
     forwards the request, then unwraps the 2026-07-28 result envelope back
-    into a plain released-protocol result.
+    into a plain legacy-protocol result.
 
 Everything the server logs goes to *its* stderr, which we inherit, so it
 still lands in the same place. Our own diagnostics use a distinct prefix.
@@ -37,7 +39,7 @@ ADAPTER_INFO = {"name": "openalex-dual-era-adapter", "version": "1.0.0"}
 FALLBACK_SERVER_INFO = {"name": "openalex-sqlite", "version": "0.2.0"}
 
 # Keys that belong to the 2026-07-28 result envelope, not the operation
-# payload the released protocol expects.
+# payload the legacy protocol expects.
 ENVELOPE_KEYS = {"resultType", "_meta", "ttlMs", "cacheScope"}
 
 # Methods that map straight through to the downstream server (with _meta
@@ -167,12 +169,12 @@ class Downstream:
 
 
 def unwrap(result):
-    """Strip the 2026-07-28 envelope, leaving the released-protocol payload."""
+    """Strip the 2026-07-28 envelope, leaving the legacy-protocol payload."""
     return {k: v for k, v in result.items() if k not in ENVELOPE_KEYS}
 
 
 # --------------------------------------------------------------------------
-# Handshake handled locally, in the released protocol
+# Handshake handled locally, in the legacy protocol
 # --------------------------------------------------------------------------
 
 def handle_initialize(down, msg_id, params, client_info):
@@ -217,7 +219,7 @@ def handle_pass_through(down, msg_id, method, params, client_info):
 
 def main():
     down = Downstream()
-    log("bridging released MCP <->", DOWNSTREAM_PROTOCOL, "via", SERVER_PATH)
+    log("bridging legacy MCP <->", DOWNSTREAM_PROTOCOL, "via", SERVER_PATH)
     client_info = None
     try:
         for line in sys.stdin:
