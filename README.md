@@ -177,8 +177,8 @@ The server resolves `data/openalex.db` relative to its own location, so it is in
 | **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
 | **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
 | None | **[Self hosting LLMs with Llama.cpp](https://data4sci.substack.com/p/self-hosting-llms-with-llamacpp)** | Run LLMs on your own hardware: install llama.cpp, serve models over an OpenAI-compatible API, explore GGUF files, and choose the right quantization |
-| **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | *Coming soon* | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
-| **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | *Coming soon* | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
+| **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | **[Evaluating Your Agentic Harness](https://data4sci.substack.com/p/evaluating-your-agentic-harnesses)** | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
+| **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | **[An MCP Server from Scratch](https://data4sci.substack.com/p/an-mcp-server-from-scratch)** | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
 
 ## Repository Structure
 
@@ -190,19 +190,20 @@ LLMs/
 ├── 04 - Evaluating Agentic Harnesses.ipynb # Notebook 4: Eval suite, cost, failure modes
 ├── 05 - MCP Server.ipynb                   # Notebook 5: MCP server from scratch
 ├── d4sci_harness.py                        # The harness from notebook 3, importable
-├── mcp_server/                              # Notebook 5's executable pieces
+├── mcp_server/                             # Notebook 5's executable pieces
 │   ├── mcp_openalex_server.py              # The from-scratch MCP stdio server
 │   ├── create_openalex_db.py               # OpenAlex → SQLite build pipeline
 │   ├── mcp_openalex_adapter.py             # Dual-era protocol adapter
 │   └── test_mcp_openalex_server.py         # Wire-level server tests
-├── data/                                    # Logos and assets
+├── data/
 │   ├── D4Sci_logo_ball.png
-│   ├── D4Sci_logo_full.png
-│   └── bgoncalves.png
-├── d4sci.mplstyle                           # Custom matplotlib style
-├── pyproject.toml                           # Dependency manifest (for `uv sync`)
-├── uv.lock                                  # Lock file for reproducible builds
-└── LICENSE                                  # MIT License
+│   ├── D4Sci_logo_full.png                 # Logos and assets
+│   ├── openalex_raw.jsonl.gz               # Raw OpenAlex subset data
+│   └── openalex.db                         # OpenAlex SQLite database
+├── d4sci.mplstyle                          # Custom matplotlib style
+├── pyproject.toml                          # Dependency manifest (for `uv sync`)
+├── uv.lock                                 # Lock file for reproducible builds
+└── LICENSE                                 # MIT License
 ```
 
 ## Setup
