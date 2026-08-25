@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "openalex": {
+      "command": "/Users/bgoncalves/My Drive/DataForScience/LLMs/.venv/bin/python",
+      "args": [
+        "mcp_server/mcp_openalex_adapter.py"
+      ]
+    }
+  }
+}
