@@ -179,6 +179,7 @@ The server resolves `data/openalex.db` relative to its own location, so it is in
 | None | **[Self hosting LLMs with Llama.cpp](https://data4sci.substack.com/p/self-hosting-llms-with-llamacpp)** | Run LLMs on your own hardware: install llama.cpp, serve models over an OpenAI-compatible API, explore GGUF files, and choose the right quantization |
 | **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | **[Evaluating Your Agentic Harness](https://data4sci.substack.com/p/evaluating-your-agentic-harnesses)** | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
 | **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | **[An MCP Server from Scratch](https://data4sci.substack.com/p/an-mcp-server-from-scratch)** | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
+| None | **[LLMs Are the New Wikipedia](https://data4sci.substack.com/p/llms-are-the-new-wikipedia)** | Every old criticism is new again: why the reliability debate around LLMs mirrors Wikipedia's early years, and why quantitative evaluation is what settles it |
 
 ## Repository Structure
 
