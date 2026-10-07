@@ -1,0 +1,16 @@
+{
+  "instruction": "Answer the question in one clear paragraph of 4 to 8 sentences. Write for a general reader.",
+  "prompt_template": "{INSTRUCTION}\\n\\nQuestion: {question[:2000]} -> chat template, add_generation_prompt=True",
+  "dataset": {
+    "name": "Hello-SimpleAI/HC3",
+    "file": "all.jsonl",
+    "n_prompts": 10000,
+    "dedupe": "drop_duplicates(question), head"
+  },
+  "engine": "vllm",
+  "device": "cuda",
+  "seed": 0,
+  "max_new_tokens": 256,
+  "max_model_len": 1024,
+  "sampling": "per-model generation_config.json defaults, recorded on each row"
+}

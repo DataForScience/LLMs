@@ -1,0 +1,5 @@
+{"model": "Qwen2.5-7B-Instruct-Q4_K_M", "model_hash": "3b3101d52a29", "engine": "vllm", "wall_s": 1930.2, "n_generations": 10000, "output_tokens": 1445727, "finished_at": "2026-08-18 07:39:21"}
+{"model": "gemma-2-9b-it-Q4_K_M", "model_hash": "1d9185e536a7", "engine": "transformers", "wall_s": 8106.7, "n_generations": 10000, "output_tokens": 1440437, "finished_at": "2026-08-18 09:55:32"}
+{"model": "Mistral-7B-Instruct-v0.3-Q4_K_M", "model_hash": "5fa63d0938e8", "engine": "transformers", "wall_s": 10278.9, "n_generations": 10000, "output_tokens": 1794684, "finished_at": "2026-08-18 12:47:36"}
+{"model": "Qwen3-8B-Q4_K_M", "model_hash": "e43b0bec6918", "engine": "transformers", "wall_s": 6008.6, "n_generations": 10000, "output_tokens": 1417450, "finished_at": "2026-08-18 14:28:34"}
+{"model": "Ministral-8B-Instruct-2410-Q4_K_M", "model_hash": "a3b1dcb5537f", "engine": "transformers", "wall_s": 8542.1, "n_generations": 10000, "output_tokens": 1489096, "finished_at": "2026-08-18 16:51:45"}

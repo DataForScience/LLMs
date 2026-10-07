@@ -1,0 +1,135 @@
+{
+  "run_id": "20260820-221710",
+  "host": "spark-677d",
+  "transformers": "5.5.4",
+  "torch": "2.11.0+cu130",
+  "sklearn": "1.8.0",
+  "dataset": {
+    "file": "hc3_default_generations.jsonl",
+    "hc3_file": "all.jsonl",
+    "human_class": true,
+    "chatgpt_class": true,
+    "rows": 67207,
+    "classes": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": 9601,
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": 9601,
+      "Qwen2.5-7B-Instruct-Q4_K_M": 9601,
+      "Qwen3-8B-Q4_K_M": 9601,
+      "chatgpt-2022": 9601,
+      "gemma-2-9b-it-Q4_K_M": 9601,
+      "human": 9601
+    },
+    "sampling_by_label": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      },
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      },
+      "Qwen2.5-7B-Instruct-Q4_K_M": {
+        "temperature": 0.7000000000000001,
+        "top_p": 0.8,
+        "top_k": 20.0
+      },
+      "Qwen3-8B-Q4_K_M": {
+        "temperature": 0.6000000000000001,
+        "top_p": 0.9500000000000001,
+        "top_k": 20.0
+      },
+      "gemma-2-9b-it-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      }
+    },
+    "train_rows": 53649,
+    "test_rows": 13558,
+    "split": "prompt_idx % 5 == 0 -> test",
+    "balanced": true
+  },
+  "detector": {
+    "model": "answerdotai/ModernBERT-base",
+    "checkpoint": "results_new/detector_modernbert",
+    "max_len": 256,
+    "epochs": 3,
+    "train_accuracy": 0.9978,
+    "test_accuracy": 0.9407,
+    "train_macro_f1": 0.9978,
+    "test_macro_f1": 0.9408,
+    "top_k_accuracy": {
+      "1": 0.9407,
+      "2": 0.9874,
+      "3": 0.9959
+    },
+    "per_class": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": {
+        "precision": 0.84774728120145,
+        "recall": 0.8455578512396694,
+        "f1-score": 0.8466511507628652,
+        "support": 1936.0
+      },
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": {
+        "precision": 0.877602844083291,
+        "recall": 0.8925619834710744,
+        "f1-score": 0.8850192061459667,
+        "support": 1936.0
+      },
+      "Qwen2.5-7B-Instruct-Q4_K_M": {
+        "precision": 0.9347488348006214,
+        "recall": 0.9323347107438017,
+        "f1-score": 0.9335402120506853,
+        "support": 1936.0
+      },
+      "Qwen3-8B-Q4_K_M": {
+        "precision": 0.9558375634517766,
+        "recall": 0.9726239669421488,
+        "f1-score": 0.96415770609319,
+        "support": 1936.0
+      },
+      "chatgpt-2022": {
+        "precision": 0.992681651855724,
+        "recall": 0.9880332986472424,
+        "f1-score": 0.9903520208604955,
+        "support": 1922.0
+      },
+      "gemma-2-9b-it-Q4_K_M": {
+        "precision": 0.9831045406546991,
+        "recall": 0.9617768595041323,
+        "f1-score": 0.9723237597911227,
+        "support": 1936.0
+      },
+      "human": {
+        "precision": 0.9948717948717949,
+        "recall": 0.9918200408997955,
+        "f1-score": 0.9933435739887353,
+        "support": 1956.0
+      },
+      "accuracy": 0.9406992181737719,
+      "macro avg": {
+        "precision": 0.9409420729884795,
+        "recall": 0.9406726730639806,
+        "f1-score": 0.9407696613847228,
+        "support": 13558.0
+      },
+      "weighted avg": {
+        "precision": 0.9409682007605349,
+        "recall": 0.9406992181737719,
+        "f1-score": 0.9407960166892975,
+        "support": 13558.0
+      }
+    },
+    "accuracy_by_domain": {
+      "reddit_eli5": 0.9407
+    }
+  },
+  "baseline": {
+    "model": "tfidf_char35_logreg",
+    "fit_seconds": 106.8,
+    "test_accuracy": 0.8568,
+    "test_macro_f1": 0.8554
+  }
+}

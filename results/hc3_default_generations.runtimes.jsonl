@@ -1,0 +1,4 @@
+{"model": "Qwen3-8B-Q4_K_M", "model_hash": "e43b0bec6918", "engine": "transformers", "wall_s": 5419.6, "n_generations": 10000, "output_tokens": 1417450, "finished_at": "2026-08-17 17:43:34"}
+{"model": "Ministral-8B-Instruct-2410-Q4_K_M", "model_hash": "a3b1dcb5537f", "engine": "transformers", "wall_s": 7784.4, "n_generations": 10000, "output_tokens": 1482332, "finished_at": "2026-08-17 19:55:15"}
+{"model": "Yi-1.5-9B-Chat-Q4_K_M", "model_hash": "f9fc88ee21f3", "engine": "vllm", "wall_s": 3613.1, "n_generations": 10000, "output_tokens": 2388264, "finished_at": "2026-08-17 20:57:14"}
+{"model": "Falcon3-7B-Instruct-Q4_K_M", "model_hash": "c6a0168b953d", "engine": "transformers", "wall_s": 5380.1, "n_generations": 10000, "output_tokens": 1405633, "finished_at": "2026-08-17 22:27:49"}

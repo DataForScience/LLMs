@@ -1,0 +1,152 @@
+{
+  "run_id": "20260820-215008",
+  "host": "spark-677d",
+  "sklearn": "1.8.0",
+  "dataset": {
+    "file": "hc3_default_generations.jsonl",
+    "hc3_file": "all.jsonl",
+    "human_class": true,
+    "chatgpt_class": true,
+    "rows": 67207,
+    "classes": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": 9601,
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": 9601,
+      "Qwen2.5-7B-Instruct-Q4_K_M": 9601,
+      "Qwen3-8B-Q4_K_M": 9601,
+      "chatgpt-2022": 9601,
+      "gemma-2-9b-it-Q4_K_M": 9601,
+      "human": 9601
+    },
+    "sampling_by_label": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      },
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      },
+      "Qwen2.5-7B-Instruct-Q4_K_M": {
+        "temperature": 0.7000000000000001,
+        "top_p": 0.8,
+        "top_k": 20.0
+      },
+      "Qwen3-8B-Q4_K_M": {
+        "temperature": 0.6000000000000001,
+        "top_p": 0.9500000000000001,
+        "top_k": 20.0
+      },
+      "gemma-2-9b-it-Q4_K_M": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "top_k": -1.0
+      }
+    },
+    "train_rows": 53649,
+    "test_rows": 13558,
+    "split": "prompt_idx % 5 == 0 -> test",
+    "balanced": true
+  },
+  "baseline": {
+    "model": "tfidf_char35_logreg",
+    "fit_seconds": 113.0,
+    "train_accuracy": 0.9337,
+    "test_accuracy": 0.8568,
+    "train_macro_f1": 0.9333,
+    "test_macro_f1": 0.8554,
+    "top_k_accuracy": {
+      "1": 0.8568,
+      "2": 0.9546,
+      "3": 0.9816
+    },
+    "per_class": {
+      "Ministral-8B-Instruct-2410-Q4_K_M": {
+        "precision": 0.7256843331391962,
+        "recall": 0.643595041322314,
+        "f1-score": 0.6821790309334793,
+        "support": 1936.0
+      },
+      "Mistral-7B-Instruct-v0.3-Q4_K_M": {
+        "precision": 0.7732558139534884,
+        "recall": 0.8243801652892562,
+        "f1-score": 0.798,
+        "support": 1936.0
+      },
+      "Qwen2.5-7B-Instruct-Q4_K_M": {
+        "precision": 0.860655737704918,
+        "recall": 0.8677685950413223,
+        "f1-score": 0.8641975308641975,
+        "support": 1936.0
+      },
+      "Qwen3-8B-Q4_K_M": {
+        "precision": 0.8960040983606558,
+        "recall": 0.9034090909090909,
+        "f1-score": 0.8996913580246914,
+        "support": 1936.0
+      },
+      "chatgpt-2022": {
+        "precision": 0.9535732916014606,
+        "recall": 0.951092611862643,
+        "f1-score": 0.952331336285491,
+        "support": 1922.0
+      },
+      "gemma-2-9b-it-Q4_K_M": {
+        "precision": 0.8371369294605809,
+        "recall": 0.8336776859504132,
+        "f1-score": 0.8354037267080745,
+        "support": 1936.0
+      },
+      "human": {
+        "precision": 0.9388560157790927,
+        "recall": 0.9734151329243353,
+        "f1-score": 0.9558232931726908,
+        "support": 1956.0
+      },
+      "accuracy": 0.8568372916359345,
+      "macro avg": {
+        "precision": 0.8550237457141989,
+        "recall": 0.8567626176141966,
+        "f1-score": 0.8553751822840894,
+        "support": 13558.0
+      },
+      "weighted avg": {
+        "precision": 0.855045648041893,
+        "recall": 0.8568372916359345,
+        "f1-score": 0.8554232407043395,
+        "support": 13558.0
+      }
+    },
+    "accuracy_by_domain": {
+      "reddit_eli5": 0.8568
+    },
+    "learning_curve": [
+      {
+        "n_train": 5362,
+        "train_acc": 0.9573,
+        "test_acc": 0.7725
+      },
+      {
+        "n_train": 13411,
+        "train_acc": 0.9446,
+        "test_acc": 0.8115
+      },
+      {
+        "n_train": 26822,
+        "train_acc": 0.9376,
+        "test_acc": 0.8339
+      },
+      {
+        "n_train": 40238,
+        "train_acc": 0.9365,
+        "test_acc": 0.8484
+      },
+      {
+        "n_train": 53649,
+        "train_acc": 0.9337,
+        "test_acc": 0.8568
+      }
+    ]
+  }
+}
