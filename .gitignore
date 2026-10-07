@@ -135,3 +135,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Raw dataset downloads for notebook 07
+data/downloads/
