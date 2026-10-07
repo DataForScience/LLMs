@@ -18,4 +18,7 @@ dependencies = [
     "sentence-transformers>=5.4.1",
     "tqdm>=4.67.3",
     "watermark>=2.6.0",
+    "vllm>=0.31.0 ; sys_platform == 'linux'",
+    "vllm-gguf-plugin>=0.0.5 ; sys_platform == 'linux'",
+    "huggingface-hub>=1.27.0",
 ]
