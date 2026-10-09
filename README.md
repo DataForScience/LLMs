@@ -20,19 +20,22 @@ These notebooks teach you to build the scaffolding that transforms an LLM from a
 2. **Continue with Notebook 2** (`02 - Small Language Model.ipynb`) to see how language models work from the ground up
 3. **Then Notebook 3** (`03 - Advanced Agentic Harness.ipynb`) to upgrade the harness with production-grade patterns
 4. **Continue with Notebook 4** (`04 - Evaluating Agentic Harnesses.ipynb`) to measure whether any of it actually works
-5. **Finish with Notebook 5** (`05 - MCP Server.ipynb`) to hand real data to an agent through a from-scratch MCP server
+5. **Continue with Notebook 5** (`05 - MCP Server.ipynb`) to hand real data to an agent through a from-scratch MCP server
+6. **Finish with Notebook 6** (`06 - Local Inference with vLLM.ipynb`) to run an open-weight model on your own GPU and process thousands of documents with it
 
 Notebooks 3 and 4 share a module, [`d4sci_harness.py`](./d4sci_harness.py) — notebook 3 builds it
 step by step, notebook 4 imports it. See [The harness as a module](#the-harness-as-a-module) below.
 Notebook 5 likewise keeps its executable pieces in [`mcp_server/`](./mcp_server/) — see
-[The MCP server as scripts](#the-mcp-server-as-scripts) below.
+[The MCP server as scripts](#the-mcp-server-as-scripts) below. Notebook 6 reads the OpenAlex
+database that notebook 5 builds, and needs a Linux machine with an NVIDIA GPU — see
+[Hardware for notebook 6](#3-hardware-for-notebook-6) below.
 
 ## Key Features
 
-- **Runs offline** — Every notebook works end to end on a rule-based mock backend, with no API key
+- **Runs offline** — Notebooks 1–5 work end to end on a rule-based mock backend, and notebook 6 runs an open-weight model on your own GPU; none of them needs an API key
 - **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
 - **Hands-on implementation** — Build everything from scratch to understand every design decision
-- **Measured, not asserted** — The eval suite in notebook 4 turns "it worked once" into pass rates, cost, and failure-mode distributions
+- **Measured, not asserted** — The eval suite in notebook 4 turns "it worked once" into pass rates, cost, and failure-mode distributions, and notebook 6 measures every inference-engine claim on the hardware in front of you
 
 
 ## What You'll Learn
@@ -108,6 +111,21 @@ Build a complete MCP server from scratch — raw JSON-RPC over stdio, no SDK —
 
 **What you'll build:** A five-tool, one-resource MCP server over an OpenAlex subset — `list_tables`, `describe_table`, `query` with handle-based pagination, `fetch_page`, and BM25 `search_works` — plus the launch configuration to plug it into a real MCP host.
 
+### Notebook 6: Local Inference with vLLM
+Stop treating the model as a remote service: run an open-weight LLM yourself with [vLLM](https://github.com/vllm-project/vllm), the engine most self-hosted deployments run on, and measure what it does.
+
+**Core concepts:**
+- **Why naive generation wastes a GPU** — decode is memory-bandwidth bound, so batching is nearly free until the KV cache runs out
+- **Choosing a model for the machine** — tokens/s ≈ bandwidth ÷ bytes read per token, and why a Mixture-of-Experts model in FP8 (`Qwen3.5-35B-A3B-FP8`) beats dense models on a [128 GB DGX Spark](https://amzn.to/3WdgjPC).
+- **Anatomy before loading** — computing KV cache cost per token from the model config, including Qwen3.5's hybrid full/linear attention layers
+- **The offline engine** — what `LLM(...)` does at startup (weight loading, memory profiling, `torch.compile`, CUDA graphs) and where the memory goes
+- **Continuous batching, measured** — throughput against batch size on the same requests
+- **Prefix caching, measured** — shared system prompts reused block by block, and why a prefix shorter than one block is never shared
+- **Structured outputs** — grammar-constrained decoding from a Pydantic schema, against an unconstrained baseline that only *asks* for JSON
+- **From notebook to server** — the same engine behind `vllm serve` and an OpenAI-compatible API
+
+**What you'll build:** A structured extraction over thousands of "scaling laws" abstracts from notebook 5's OpenAlex database, turned into an analysis of which fields use the term, whether the model agrees with OpenAlex's own topic labels, and how often a "scaling law" is actually a power law.
+
 ## The harness as a module
 
 Everything notebook 3 builds step by step — typed tools, the plan DAG, the parallel executor, multi-tier memory, the verification hierarchy, multi-dimensional budgets, structured tracing, and the `Orchestrator` that composes them — also lives in [`d4sci_harness.py`](./d4sci_harness.py) as an importable module. Notebook 3 constructs it; notebook 4 imports it, which is how you would consume it in a real project:
@@ -180,6 +198,7 @@ The server resolves `data/openalex.db` relative to its own location, so it is in
 | **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | **[Evaluating Your Agentic Harness](https://data4sci.substack.com/p/evaluating-your-agentic-harnesses)** | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
 | **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | **[An MCP Server from Scratch](https://data4sci.substack.com/p/an-mcp-server-from-scratch)** | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
 | None | **[LLMs Are the New Wikipedia](https://data4sci.substack.com/p/llms-are-the-new-wikipedia)** | Every old criticism is new again: why the reliability debate around LLMs mirrors Wikipedia's early years, and why quantitative evaluation is what settles it |
+| **[06 - Local Inference with vLLM.ipynb](./06%20-%20Local%20Inference%20with%20vLLM.ipynb)** | Coming soon | Run an open-weight model with vLLM: choosing a model from memory bandwidth, continuous batching, prefix caching, and structured outputs over thousands of abstracts |
 
 ## Repository Structure
 
@@ -190,6 +209,7 @@ LLMs/
 ├── 03 - Advanced Agentic Harness.ipynb     # Notebook 3: Production-grade patterns
 ├── 04 - Evaluating Agentic Harnesses.ipynb # Notebook 4: Eval suite, cost, failure modes
 ├── 05 - MCP Server.ipynb                   # Notebook 5: MCP server from scratch
+├── 06 - Local Inference with vLLM.ipynb    # Notebook 6: Self-hosted inference with vLLM
 ├── d4sci_harness.py                        # The harness from notebook 3, importable
 ├── mcp_server/                             # Notebook 5's executable pieces
 │   ├── mcp_openalex_server.py              # The from-scratch MCP stdio server
@@ -201,6 +221,11 @@ LLMs/
 │   ├── D4Sci_logo_full.png                 # Logos and assets
 │   ├── openalex_raw.jsonl.gz               # Raw OpenAlex subset data
 │   └── openalex.db                         # OpenAlex SQLite database
+├── outputs/                                # Everything the notebooks write, one folder per notebook
+│   ├── small_language_model/cache/         # Notebook 2's cached 4-gram model
+│   ├── advanced_harness/                   # Notebook 3's plan DAG figures
+│   ├── evaluating_harnesses/               # Notebook 4's re-plan DAG figure
+│   └── vllm/cache/                         # Notebook 6's cached generations and measurements
 ├── d4sci.mplstyle                          # Custom matplotlib style
 ├── pyproject.toml                          # Dependency manifest (for `uv sync`)
 ├── uv.lock                                 # Lock file for reproducible builds
@@ -229,7 +254,7 @@ uv sync
 
 ### 2) API Keys (Optional)
 
-The notebooks run end-to-end in **mock mode** without any API keys. They include rule-based mock LLM providers that are smart enough to drive the demos.
+Notebooks 1–5 run end-to-end in **mock mode** without any API keys. They include rule-based mock LLM providers that are smart enough to drive the demos. Notebook 6 needs no API key either, because it runs the model locally (see [Hardware for notebook 6](#3-hardware-for-notebook-6)).
 
 Notebooks 3 and 4 ship with `BACKEND = "anthropic"`, so to run them offline set:
 
@@ -254,7 +279,19 @@ Mock mode is deterministic, which makes it the right choice for CI and for follo
 Real-backend runs are not — plans vary between runs, so expect the eval suite's pass rate
 to move around. That variability is the point of measuring it.
 
-### 3) Launch notebooks
+### 3) Hardware for notebook 6
+
+Notebook 6 is the one notebook without a mock backend: it loads a real model into GPU memory, so it
+needs a Linux machine with an NVIDIA GPU. `uv sync` installs vLLM only on Linux (the dependency
+carries a `sys_platform == 'linux'` marker), so on macOS the rest of the environment installs
+normally and notebook 6 is the one to skip.
+
+- **Target machine.** The notebook was written and measured on an [NVIDIA DGX Spark](https://amzn.to/3WdgjPC) (128 GB of unified memory at 273 GB/s). On other hardware, set `MEMORY_BANDWIDTH_GBPS` and `DEVICE_MEMORY_GB` in the configuration cell to your device's figures and adjust `GPU_MEMORY_UTILIZATION` to the memory you can spare; the model-choice arithmetic in Section 1 then tells you whether the default model still fits comfortably.
+- **Model download.** `Qwen/Qwen3.5-35B-A3B-FP8` is a public, Apache-2.0 checkpoint, so no Hugging Face token is needed, but the first run downloads about 37 GB of weights, and the first engine start spends several minutes compiling the model and capturing CUDA graphs.
+- **Data.** The extraction runs over `data/openalex.db`, the database built in notebook 5.
+- **Result cache.** Every generation and measurement is saved to `outputs/vllm/cache/`, keyed on the vLLM version, the engine arguments, and the inputs. With the same vLLM version and settings, a re-run reloads those results instead of regenerating them (the engine itself still starts). Set `REFRESH_CACHE = True` to measure everything again, for instance on different hardware.
+
+### 4) Launch notebooks
 
 ```bash
 jupyter notebook
