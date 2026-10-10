@@ -13,6 +13,18 @@ Educational notebooks exploring production-grade agentic systems and LLMs pipeli
 
 These notebooks teach you to build the scaffolding that transforms an LLM from a text generator into a truly useful everyday tool.
 
+## Contents
+
+| Notebooks | Blog post | Content |
+| :--: | :--: | :--: |
+| **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** | **[Building a Basic Agentic Harness](https://data4sci.substack.com/p/building-a-basic-agentic-harness)** | Start here to understand the fundamentals |
+| **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
+| **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
+| None | **[Self hosting LLMs with Llama.cpp](https://data4sci.substack.com/p/self-hosting-llms-with-llamacpp)** | Run LLMs on your own hardware: install llama.cpp, serve models over an OpenAI-compatible API, explore GGUF files, and choose the right quantization |
+| **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | **[Evaluating Your Agentic Harness](https://data4sci.substack.com/p/evaluating-your-agentic-harnesses)** | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
+| **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | **[An MCP Server from Scratch](https://data4sci.substack.com/p/an-mcp-server-from-scratch)** | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
+| None | **[LLMs Are the New Wikipedia](https://data4sci.substack.com/p/llms-are-the-new-wikipedia)** | Every old criticism is new again: why the reliability debate around LLMs mirrors Wikipedia's early years, and why quantitative evaluation is what settles it |
+| **[06 - Local Inference with vLLM.ipynb](./06%20-%20Local%20Inference%20with%20vLLM.ipynb)** | **[Local LLM Inference at Scale with vLLM](https://data4sci.substack.com/p/local-llm-inference-at-scale-with)** | Run an open-weight model with vLLM: choosing a model from memory bandwidth, continuous batching, prefix caching, and structured outputs over thousands of abstracts |
 
 ## Learning Path
 
@@ -32,7 +44,7 @@ database that notebook 5 builds, and needs a Linux machine with an NVIDIA GPU �
 
 ## Key Features
 
-- **Runs offline** — Notebooks 1–5 work end to end on a rule-based mock backend, and notebook 6 runs an open-weight model on your own GPU; none of them needs an API key
+- **Almost no API keys** — Only notebook 1 requires a hosted model. Notebooks 3 and 4 switch to a rule-based mock backend with one line, notebooks 2 and 5 don't call an LLM at all, and notebook 6 runs an open-weight model on your own GPU
 - **Production-ready patterns** — Learn the same techniques used in Claude Code, Cursor, and Devin
 - **Hands-on implementation** — Build everything from scratch to understand every design decision
 - **Measured, not asserted** — The eval suite in notebook 4 turns "it worked once" into pass rates, cost, and failure-mode distributions, and notebook 6 measures every inference-engine claim on the hardware in front of you
@@ -124,7 +136,7 @@ Stop treating the model as a remote service: run an open-weight LLM yourself wit
 - **Structured outputs** — grammar-constrained decoding from a Pydantic schema, against an unconstrained baseline that only *asks* for JSON
 - **From notebook to server** — the same engine behind `vllm serve` and an OpenAI-compatible API
 
-**What you'll build:** A structured extraction over thousands of "scaling laws" abstracts from notebook 5's OpenAlex database, turned into an analysis of which fields use the term, whether the model agrees with OpenAlex's own topic labels, and how often a "scaling law" is actually a power law.
+**What you'll build:** A structured extraction over 2,000 "scaling laws" abstracts sampled from notebook 5's OpenAlex database, turned into an analysis of which fields use the term, whether the model agrees with OpenAlex's own topic labels, and how often a "scaling law" is actually a power law.
 
 ## The harness as a module
 
@@ -187,18 +199,7 @@ Everything on the server's critical path is standard library only (`json`, `sqli
 
 The server resolves `data/openalex.db` relative to its own location, so it is independent of whatever working directory the host chooses.
 
-## Contents
-
-| Notebooks | Blog post | Content |
-| :--: | :--: | :--: |
-| **[01 - Basic Agentic Harness.ipynb](./01%20-%20Basic%20Agentic%20Harness.ipynb)** | **[Building a Basic Agentic Harness](https://data4sci.substack.com/p/building-a-basic-agentic-harness)** | Start here to understand the fundamentals |
-| **[02 - Small Language Model.ipynb](./02%20-%20Small%20Language%20Model.ipynb)** |  **[Build a (small) language model by counting](https://data4sci.substack.com/p/build-a-small-language-model-by-counting)** | Build an n-gram language model from scratch and generate text |
-| **[03 - Advanced Agentic Harness.ipynb](./03%20-%20Advanced%20Agentic%20Harness.ipynb)** | **[Building an Advanced Agentic Harness](https://data4sci.substack.com/p/building-an-advanced-agentic-harness)** | Production-grade patterns: DAG orchestration, memory, verification, and multi-agent roles |
-| None | **[Self hosting LLMs with Llama.cpp](https://data4sci.substack.com/p/self-hosting-llms-with-llamacpp)** | Run LLMs on your own hardware: install llama.cpp, serve models over an OpenAI-compatible API, explore GGUF files, and choose the right quantization |
-| **[04 - Evaluating Agentic Harnesses.ipynb](./04%20-%20Evaluating%20Agentic%20Harnesses.ipynb)** | **[Evaluating Your Agentic Harness](https://data4sci.substack.com/p/evaluating-your-agentic-harnesses)** | Eval suites, cost and latency measurement, failure modes, and three measured upgrades |
-| **[05 - MCP Server.ipynb](./05%20-%20MCP%20Server.ipynb)** | **[An MCP Server from Scratch](https://data4sci.substack.com/p/an-mcp-server-from-scratch)** | Build an MCP server from scratch: OpenAlex data pipeline, SQLite + FTS5, raw JSON-RPC over stdio, and a from-scratch client |
-| None | **[LLMs Are the New Wikipedia](https://data4sci.substack.com/p/llms-are-the-new-wikipedia)** | Every old criticism is new again: why the reliability debate around LLMs mirrors Wikipedia's early years, and why quantitative evaluation is what settles it |
-| **[06 - Local Inference with vLLM.ipynb](./06%20-%20Local%20Inference%20with%20vLLM.ipynb)** | Coming soon | Run an open-weight model with vLLM: choosing a model from memory bandwidth, continuous batching, prefix caching, and structured outputs over thousands of abstracts |
+The repository also ships a project-scoped [`.mcp.json`](./.mcp.json), read by hosts such as Claude Code, that registers the server through `mcp_openalex_adapter.py`. Its `command` points at the author's virtual environment, so change it to the Python interpreter in your own `.venv` before using it.
 
 ## Repository Structure
 
@@ -216,16 +217,19 @@ LLMs/
 │   ├── create_openalex_db.py               # OpenAlex → SQLite build pipeline
 │   ├── mcp_openalex_adapter.py             # Dual-era protocol adapter
 │   └── test_mcp_openalex_server.py         # Wire-level server tests
+├── .mcp.json                               # Project MCP config that launches the adapter
 ├── data/
 │   ├── D4Sci_logo_ball.png
 │   ├── D4Sci_logo_full.png                 # Logos and assets
+│   ├── bgoncalves.png                      # Author photo
 │   ├── openalex_raw.jsonl.gz               # Raw OpenAlex subset data
 │   └── openalex.db                         # OpenAlex SQLite database
 ├── outputs/                                # Everything the notebooks write, one folder per notebook
 │   ├── small_language_model/cache/         # Notebook 2's cached 4-gram model
 │   ├── advanced_harness/                   # Notebook 3's plan DAG figures
 │   ├── evaluating_harnesses/               # Notebook 4's re-plan DAG figure
-│   └── vllm/cache/                         # Notebook 6's cached generations and measurements
+│   └── vllm/                               # Notebook 6's extractions.jsonl
+│       └── cache/                          # Notebook 6's cached generations and measurements
 ├── d4sci.mplstyle                          # Custom matplotlib style
 ├── pyproject.toml                          # Dependency manifest (for `uv sync`)
 ├── uv.lock                                 # Lock file for reproducible builds
@@ -252,9 +256,11 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 uv sync
 ```
 
-### 2) API Keys (Optional)
+The project requires Python 3.13 or newer; `uv venv` picks a matching interpreter from `pyproject.toml` and downloads one if needed.
 
-Notebooks 1–5 run end-to-end in **mock mode** without any API keys. They include rule-based mock LLM providers that are smart enough to drive the demos. Notebook 6 needs no API key either, because it runs the model locally (see [Hardware for notebook 6](#3-hardware-for-notebook-6)).
+### 2) API Keys
+
+Notebook 1 is the only notebook that needs an API key: it calls Claude through `AnthropicProvider` and has no offline fallback. Notebooks 3 and 4 include a rule-based mock provider that is smart enough to drive the demos, notebooks 2 and 5 don't call an LLM at all, and notebook 6 runs its model locally (see [Hardware for notebook 6](#3-hardware-for-notebook-6)).
 
 Notebooks 3 and 4 ship with `BACKEND = "anthropic"`, so to run them offline set:
 
@@ -262,7 +268,7 @@ Notebooks 3 and 4 ship with `BACKEND = "anthropic"`, so to run them offline set:
 BACKEND = "mock"
 ```
 
-To use the real API instead, export your Anthropic API key before launching Jupyter:
+For notebook 1, and for notebooks 3 and 4 on the real backend, export your Anthropic API key before launching Jupyter:
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
@@ -279,17 +285,21 @@ Mock mode is deterministic, which makes it the right choice for CI and for follo
 Real-backend runs are not — plans vary between runs, so expect the eval suite's pass rate
 to move around. That variability is the point of measuring it.
 
+Keys aside, the first run of several notebooks downloads data: notebook 2 fetches WikiText-103
+from Hugging Face, notebooks 3 and 4 fetch the `all-MiniLM-L6-v2` embedding model, and notebook 6
+fetches its model weights.
+
 ### 3) Hardware for notebook 6
 
-Notebook 6 is the one notebook without a mock backend: it loads a real model into GPU memory, so it
-needs a Linux machine with an NVIDIA GPU. `uv sync` installs vLLM only on Linux (the dependency
-carries a `sys_platform == 'linux'` marker), so on macOS the rest of the environment installs
-normally and notebook 6 is the one to skip.
+Notebook 6 loads a real model into GPU memory, so it needs a Linux machine with an NVIDIA GPU. `uv sync` installs vLLM and its GGUF plugin only on Linux
+(both dependencies carry a `sys_platform == 'linux'` marker), so on macOS the rest of the
+environment installs normally and notebook 6 is the one to skip. On Linux, the lock file pins
+vLLM 0.31.0 on PyTorch 2.13 with CUDA 13 wheels, so your NVIDIA driver must support CUDA 13.
 
 - **Target machine.** The notebook was written and measured on an [NVIDIA DGX Spark](https://amzn.to/3WdgjPC) (128 GB of unified memory at 273 GB/s). On other hardware, set `MEMORY_BANDWIDTH_GBPS` and `DEVICE_MEMORY_GB` in the configuration cell to your device's figures and adjust `GPU_MEMORY_UTILIZATION` to the memory you can spare; the model-choice arithmetic in Section 1 then tells you whether the default model still fits comfortably.
 - **Model download.** `Qwen/Qwen3.5-35B-A3B-FP8` is a public, Apache-2.0 checkpoint, so no Hugging Face token is needed, but the first run downloads about 37 GB of weights, and the first engine start spends several minutes compiling the model and capturing CUDA graphs.
 - **Data.** The extraction runs over `data/openalex.db`, the database built in notebook 5.
-- **Result cache.** Every generation and measurement is saved to `outputs/vllm/cache/`, keyed on the vLLM version, the engine arguments, and the inputs. With the same vLLM version and settings, a re-run reloads those results instead of regenerating them (the engine itself still starts). Set `REFRESH_CACHE = True` to measure everything again, for instance on different hardware.
+- **Result cache.** Every generation and measurement is saved to `outputs/vllm/cache/`, keyed on the vLLM version, the engine arguments, and the inputs. With the same vLLM version and settings, a re-run reloads those results instead of regenerating them (the engine itself still starts). The repository ships the cache from the original DGX Spark run, made with the vLLM version in `uv.lock`, so a fresh clone reloads those results too. Set `REFRESH_CACHE = True` to measure everything again, for instance on different hardware.
 
 ### 4) Launch notebooks
 
